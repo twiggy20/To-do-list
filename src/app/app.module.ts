@@ -10,12 +10,14 @@ import { GetStartedComponent } from './get-started/get-started.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoComponent } from './todo/todo.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetStartedComponent,
-    TodoComponent
+    TodoComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

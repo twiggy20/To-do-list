@@ -36,3 +36,9 @@ form.myform input[type=text] {
     clear: both;
     display: table;
   }
+  .mybutton{
+    border: none;
+  }
+  .head{
+    white-space: nowrap;
+  }

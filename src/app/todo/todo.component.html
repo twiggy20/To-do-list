@@ -29,36 +29,27 @@
             </div>
         </div>
         <div class="col-md-8">
-            <!-- search button here -->
             <div class="row">
                 <form class="myform"  >
-                    <input type="text" placeholder="Search.." >
+                    <input type="text" placeholder="Search.."  class="form-control"  ngModel name="search" [(ngModel)]="filterText">
                     <button type="submit"><i class="fa fa-search"></i></button>
                   </form>
                 <table class="table table-hover pointer">
                     <thead class="text-center">
-                      <tr>
+                      <tr class="head">
                         <th>Title</th>
                         <th>Due Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>
-                    <tbody class="text-center animated fadeIn"  
-                       >
-                      <tr *ngFor="let todo of todos; let i=index">
-                       
-                        <td>{{todo.title }} {{todo.dateCreated |date}}</td>
-                        <td>
-                          {{ todo.dueDate |date }}
-                        </td>
+                    <tbody class="text-center animated fadeIn"  >
+                      <tr *ngFor="let todo of todos |search:filterText">
+                        <td>{{todo.title }} ,created {{todo.dateCreated |date}}</td>
+                        <td> {{ todo.dueDate |date }}  </td>
                         <td>{{ todo.body || 'no body' }}</td>
-                        <span>
-                            <!-- <i class="fa-solid fa-trash btn btn-danger" aria-hidden="true" onclick="status(todo.title)"></i> -->
-                            <i class="fa fa-trash text-danger mx-1" (click)="delete(todo)"></i>
-                            <i class="fa-sharp fa-solid fa-pen-to-square text-success" (click)="complete(todo)" ></i>
-                            <i class="fa-solid fa-square-check text-secondary mx-1" (click)="complete(todo)"></i>
-                            <!-- <i class="fa-duotone fa-pen-to-square "></i> -->
-                        </span>
+                            <button class="mybutton"><i class="fa fa-trash text-danger " (click)="delete(todo)"></i></button>
+                            <!-- <i class="fa-sharp fa-solid fa-pen-to-square text-success"></i> -->
+                            <button class="mybutton"><i class="fa-solid fa-square-check text-secondary" (click)="complete(todo)"></i></button>
                       </tr>
                     </tbody>
                   </table>
@@ -66,10 +57,10 @@
             <br>
             <div>
 
-                <h5>Completed Tasks</h5>
+                <h5 class="text-center">Completed To-dos</h5>
                 <table class="table table-hover pointer">
                         <thead class="text-center">
-                            <tr> 
+                            <tr class="head"> 
                             <th>Title</th>
                             <th>Due Date</th>
                             <th>Description</th>
@@ -80,21 +71,11 @@
                                 <td >{{todo.title }} {{todo.dateCreated |date}}</td>
                                 <td> {{ todo.dueDate |date }} </td>
                                 <td>{{ todo.body || 'no body' }}</td>
-                                <span *ngIf="todo.status">
-                                    <i class="fa fa-trash text-danger mx-1" (click)="delete(todo)"></i>
-                                    <i class="fa-sharp fa-solid fa-pen-to-square text-success" (click)="complete(todo)" ></i>
-                                </span>
+                                 <button class="mybutton"><i class="fa fa-trash text-danger " (click)="delete(todo)"></i></button>
                             </tr>
                         </tbody>              
                      
                 </table> 
-                <!-- <li *ngFor="let todo of todos">
-                    <div *ngIf="todo.status">
-                        {{todo.title}} {{todo.dueDate}} {{todo.body}}
-                    </div>
-
-                </li> -->
-
             </div>
         </div>
     </div>
