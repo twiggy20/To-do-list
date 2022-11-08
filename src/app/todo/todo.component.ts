@@ -11,28 +11,35 @@ export class TodoComponent implements OnInit {
   todos:Todo[]=[
     new Todo('title','body',new Date(),new Date(), false)
   ]
+   completedTodos:Todo[]=[]
    currentDate:any=new Date()
   constructor() { }
 
   ngOnInit(): void {
-     this.getAllTodos()
+    // localStorage.getItem('Complete')
+     this.getAvailableTodos()
+
   }
-  getTodos:any= ""
+  // getTodos:any= ""
   add(form:NgForm){
     let todo=new Todo(form.value.title,form.value.body,new Date(),form.value.dueDate,false)
     if(form.value.title!=""){
       this.todos.push((todo));
       console.log(this.todos)
-      localStorage.setItem('Todos',JSON.stringify(this.todos) )
+       localStorage.setItem('Todos',JSON.stringify(this.todos) )
     form.resetForm();
     
     }
 
   }
-getAllTodos(){
-  const items = localStorage.getItem('Todos')
-  if (items !== null){
-    this.todos = JSON.parse(items)
+getAvailableTodos(){
+  const newTodos = localStorage.getItem('Todos')
+  const DoneTodos=localStorage.getItem('Complete')
+  if (newTodos !== null){
+    this.todos = JSON.parse(newTodos)
+  }
+  if (DoneTodos !== null){
+    this.completedTodos = JSON.parse(DoneTodos)
   }
   // console.log(item)
   // this.todos = item;
@@ -50,20 +57,33 @@ getAllTodos(){
 
   // this.getTodos=JSON.parse(localStorage.getItem('Todos'));
 }
-  status(title:string){
-    let currentTodo=this.todos.filter(item=>item.title===title);
-    // currentTodo[0].status=true
-    console.log('staus is',  currentTodo[0].status=true)
+  complete(todo:Todo){
+    this.todos=this.todos.filter(item=>item.title!==todo.title)
+    localStorage.setItem('Todos',JSON.stringify(this.todos) )
+    //  this.completedTodos.push(todo)
+    let currentTodo=this.todos.filter(item=>item.title===todo.title);
+    this.completedTodos.push(todo)
+    localStorage.setItem('Complete',JSON.stringify(this.completedTodos) )
+    let index=this.todos.indexOf(todo);
+    // if (index>-1) {
+    //   this.todos.splice(index,1)
 
+    //  currentTodo[0].status=true
+    // this.todos.pop()
+    // console.log('staus is',  currentTodo[0].status)
+    console.log('completed ',  this.completedTodos)
+    
   }
 
-  delete(title:string){
-    let currentTodo=this.todos.filter(item=>item.title===title)[0];
-    let index=this.todos.indexOf(currentTodo,0);
-    if (index>-1) {
-      this.todos.splice(index,1)
-      //  localStorage.getItem(this.currentTodo,)
+  delete(todo:Todo){
+    this.todos=this.todos.filter(item=>item.title!==todo.title)
+     //  localStorage.getItem(this.currentTodo,)
+    // let currentTodo=this.todos.filter(item=>item.title===title)[0];
+    //  let index=this.todos.indexOf(todo);
+    // if (index>-1) {
+    //   this.todos.splice(index,1)
+    //  
       
-    }
+    // }
   }
 }
