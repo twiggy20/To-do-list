@@ -11,13 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoComponent } from './todo/todo.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchPipe } from './search.pipe';
+import { TodoViewComponent } from './todo/todo-view/todo-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetStartedComponent,
     TodoComponent,
-    SearchPipe
+    SearchPipe,
+    TodoViewComponent
   ],
   imports: [
     BrowserModule,

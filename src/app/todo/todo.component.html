@@ -56,8 +56,9 @@
             </div>
             <br>
             <div>
+                <app-todo-view [completed]="completedTodos" (deleteEvent)="delete($event)"></app-todo-view>
 
-                <h5 class="text-center">Completed To-dos</h5>
+                <!-- <h5 class="text-center">Completed To-dos</h5>
                 <table class="table table-hover pointer">
                         <thead class="text-center">
                             <tr class="head"> 
@@ -75,7 +76,7 @@
                             </tr>
                         </tbody>              
                      
-                </table> 
+                </table>  -->
             </div>
         </div>
     </div>

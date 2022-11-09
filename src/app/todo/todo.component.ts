@@ -17,7 +17,7 @@ export class TodoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+    // this.completedTodos
      this.getAvailableTodos()
 
   }
@@ -59,8 +59,13 @@ getAvailableTodos(){
   }
 
   delete(todo:Todo){
-    this.todos=this.todos.filter(item=>item.title!==todo.title)
-    // localStorage.setItem('Todos',JSON.stringify(this.todos) )
+    if (todo.status=false) {
+      this.todos=this.todos.filter(item=>item.title!==todo.title)
+       localStorage.setItem('Todos',JSON.stringify(this.todos) )
+    }
+    else
+    this.completedTodos=this.completedTodos.filter(item=>item.title!==todo.title)
+       localStorage.setItem('Complete',JSON.stringify(this.completedTodos) )
       
   }
 }
