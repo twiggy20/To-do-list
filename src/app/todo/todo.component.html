@@ -17,13 +17,13 @@
                         </div>
                         <div class="form-group">
                             <label>Due date</label>
-                            <input type="date" ngModel name="dueDate" #dueDate="ngModel" class="form-control" min="{{currentDate|date:'yyyy-MM-dd'}}">
+                            <input type="text" bsDatepicker [bsConfig]="datePickerConfig" ngModel name="dueDate" #dueDate="ngModel" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label>Description</label>
                             <textarea type="text" ngModel cols="40" rows="10" #body="ngModel" class="form-control" name="body"></textarea>
                         </div>
-                        <button id="button" type="submit" class="btn btn-success btn-block text-center"> add item</button>
+                        <button id="button" type="submit" class="btn btn-primary btn-block text-center"> Add item</button>
                     </form>
                 </div>
             </div>

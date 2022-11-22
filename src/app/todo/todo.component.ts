@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './todo';
 import{NgForm}  from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-
+  datePickerConfig!: Partial<BsDatepickerConfig>;
   todos:Todo[]=[new Todo('Default-title','Default-body',new Date(),new Date(), false)
     
   ]
    completedTodos:Todo[]=[]
    currentDate:any=new Date()
    filterText:string=''
-  constructor() { }
+  constructor( ) {
+    this.datePickerConfig=Object.assign({}, {containerClass:'theme-dark-blue',showWeekNumbers: false, minDate:new Date()});
+   }
 
   ngOnInit(): void {
     // this.completedTodos
@@ -59,13 +62,15 @@ getAvailableTodos(){
   }
 
   delete(todo:Todo){
-    if (todo.status=false) {
+    if (todo.status==false) {
       this.todos=this.todos.filter(item=>item.title!==todo.title)
        localStorage.setItem('Todos',JSON.stringify(this.todos) )
+       console.log('delete from todo')
     }
-    else
+    if(todo.status==true){ 
     this.completedTodos=this.completedTodos.filter(item=>item.title!==todo.title)
        localStorage.setItem('Complete',JSON.stringify(this.completedTodos) )
-      
+       console.log('delet from completed')
+    }
   }
 }
