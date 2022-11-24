@@ -13,7 +13,8 @@ export class TodoComponent implements OnInit {
     
   ]
    completedTodos:Todo[]=[]
-   currentDate:any=new Date()
+   DoneTodos:any
+   completeChecked!:boolean
    filterText:string=''
   constructor( ) {
     this.datePickerConfig=Object.assign({}, {containerClass:'theme-dark-blue',showWeekNumbers: false, minDate:new Date()});
@@ -41,24 +42,28 @@ export class TodoComponent implements OnInit {
   
 getAvailableTodos(){
   const newTodos = localStorage.getItem('Todos')
-  const DoneTodos=localStorage.getItem('Complete')
+   this.DoneTodos=localStorage.getItem('Complete')
   if (newTodos !== null){
     this.todos = JSON.parse(newTodos)
     console.log('new todo', newTodos)
   }
-  if (DoneTodos !== null){
-    this.completedTodos = JSON.parse(DoneTodos)
+  if (this.DoneTodos !== null){
+    this.completedTodos = JSON.parse(this.DoneTodos)
   }
   
 }
   complete(todo:Todo){
     this.todos=this.todos.filter(item=>item.title!==todo.title)
+    this.delete(todo)
     // localStorage.setItem('Todos',JSON.stringify(this.todos) )
-    let currentTodo=this.todos.filter(item=>item.title===todo.title);
+    let currentTodo=this.todos.filter(item=>item.title===todo.title)[0];
     this.completedTodos.push(todo)
+    todo.status=true;
+    this.completeChecked=true
     localStorage.setItem('Complete',JSON.stringify(this.completedTodos) )
     let index=this.todos.indexOf(todo);
     console.log('completed ',  this.completedTodos)
+    console.log('todo ',  this.todos)
   }
 
   delete(todo:Todo){

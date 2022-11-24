@@ -41,4 +41,12 @@ form.myform input[type=text] {
   }
   .head{
     white-space: nowrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  thead,th{
+   
+    /* background-color: rgb(88, 88, 163); */
+  }
+  .myList{
+    background-color: rgba(220, 235, 241, 0.774);
   }

@@ -34,12 +34,15 @@
                     <input type="text" placeholder="Search.."  class="form-control"  ngModel name="search" [(ngModel)]="filterText">
                     <button type="submit"><i class="fa fa-search"></i></button>
                   </form>
-                <table class="table table-hover pointer">
+                <div class="card my-3 myList">
+                 
+                <table class="table table-hover pointer ">
                     <thead class="text-center">
                       <tr class="head">
                         <th>Title</th>
                         <th>Due Date</th>
                         <th>Description</th>
+                        <th> </th>
                       </tr>
                     </thead>
                     <tbody class="text-center animated fadeIn"  >
@@ -53,10 +56,11 @@
                       </tr>
                     </tbody>
                   </table>
+                </div>
             </div>
             <br>
             <div>
-                <app-todo-view [completed]="completedTodos" (deleteEvent)="delete($event)"></app-todo-view>
+                <app-todo-view [completed]="completedTodos" (deleteEvent)="delete($event)"  *ngIf=" DoneTodos!==null" ></app-todo-view>
 
                 <!-- <h5 class="text-center">Completed To-dos</h5>
                 <table class="table table-hover pointer">
