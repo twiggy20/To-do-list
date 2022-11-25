@@ -6,7 +6,26 @@
 .mybutton{
     color: white;
 }
-form.myform input[type=text] {
+  .mybutton{
+    border: none;
+    cursor: pointer;
+  }
+  .head{
+    white-space: nowrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .intro, td{
+   
+   color:rgb(91, 93, 201);
+  }
+  .myList{
+    background-color: rgba(220, 235, 241, 0.774);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+  }
+
+
+  form.myform input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -19,7 +38,7 @@ form.myform input[type=text] {
     float: left;
     width: 20%;
     padding: 10px;
-    background:#778185;
+    background: #2196F3;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
@@ -28,25 +47,14 @@ form.myform input[type=text] {
   }
   
   form.myform button:hover {
-    background: #555c5f;
+    background: #0b7dda;
   }
   
-  form.myform::after {
+  form.example::after {
     content: "";
     clear: both;
     display: table;
   }
-  .mybutton{
-    border: none;
-  }
-  .head{
-    white-space: nowrap;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
-  thead,th{
-   
-    /* background-color: rgb(88, 88, 163); */
-  }
-  .myList{
-    background-color: rgba(220, 235, 241, 0.774);
+  .form-control{
+    border-radius: 0% ;
   }

@@ -23,23 +23,27 @@
                             <label>Description</label>
                             <textarea type="text" ngModel cols="40" rows="10" #body="ngModel" class="form-control" name="body"></textarea>
                         </div>
-                        <button id="button" type="submit" class="btn btn-primary btn-block text-center"> Add item</button>
+                        <button id="button" type="submit" class="btn btn-primary btn-block text-center"> Add Item</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
             <div class="row">
-                <form class="myform"  >
-                    <input type="text" placeholder="Search.."  class="form-control"  ngModel name="search" [(ngModel)]="filterText">
+                <!-- <form class="myform"  >
+                    <input type="text" placeholder="Search Todo"  class="form-control"  ngModel name="search" [(ngModel)]="filterText">
                     <button type="submit"><i class="fa fa-search"></i></button>
+                  </form> -->
+                  <form class="myform"  >
+                    <input type="text" placeholder="Search To-do" class="form-control"  ngModel name="search" [(ngModel)]="filterText">
+                    <button ><i class="fa fa-search"></i></button>
                   </form>
+                  <h2 class="intro my-3" *ngIf="todos.length===0">Nothing to show, no new To-do  </h2>
                 <div class="card my-3 myList">
-                 
-                <table class="table table-hover pointer ">
+                <table class="table table-hover pointer " *ngIf="todos.length>0">
                     <thead class="text-center">
                       <tr class="head">
-                        <th>Title</th>
+                        <th>Title/date created</th>
                         <th>Due Date</th>
                         <th>Description</th>
                         <th> </th>
@@ -47,12 +51,12 @@
                     </thead>
                     <tbody class="text-center animated fadeIn"  >
                       <tr *ngFor="let todo of todos |search:filterText">
-                        <td>{{todo.title }} ,created {{todo.dateCreated |date}}</td>
-                        <td> {{ todo.dueDate |date }}  </td>
-                        <td>{{ todo.body || 'no body' }}</td>
+                        <td>{{todo.title }} .created {{todo.dateCreated |date}}</td>
+                        <td> {{ todo.dueDate  |date  }}  </td>
+                        <td>{{ todo.body || 'not specified' }}</td>
                             <button class="mybutton"><i class="fa fa-trash text-danger " (click)="delete(todo)"></i></button>
                             <!-- <i class="fa-sharp fa-solid fa-pen-to-square text-success"></i> -->
-                            <button class="mybutton"><i class="fa-solid fa-square-check text-secondary" (click)="complete(todo)"></i></button>
+                            <button class="mybutton"><i class="fa-solid fa-square-check text-success" (click)="complete(todo)"></i></button>
                       </tr>
                     </tbody>
                   </table>
@@ -60,7 +64,7 @@
             </div>
             <br>
             <div>
-                <app-todo-view [completed]="completedTodos" (deleteEvent)="delete($event)"  *ngIf=" DoneTodos!==null" ></app-todo-view>
+                <app-todo-view [completed]="completedTodos" (deleteEvent)="delete($event)"  *ngIf="completedTodos.length>0" ></app-todo-view>
 
                 <!-- <h5 class="text-center">Completed To-dos</h5>
                 <table class="table table-hover pointer">

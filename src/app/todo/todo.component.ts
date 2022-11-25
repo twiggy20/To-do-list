@@ -13,8 +13,6 @@ export class TodoComponent implements OnInit {
     
   ]
    completedTodos:Todo[]=[]
-   DoneTodos:any
-   completeChecked!:boolean
    filterText:string=''
   constructor( ) {
     this.datePickerConfig=Object.assign({}, {containerClass:'theme-dark-blue',showWeekNumbers: false, minDate:new Date()});
@@ -42,13 +40,12 @@ export class TodoComponent implements OnInit {
   
 getAvailableTodos(){
   const newTodos = localStorage.getItem('Todos')
-   this.DoneTodos=localStorage.getItem('Complete')
+  const DoneTodos=localStorage.getItem('Complete')
   if (newTodos !== null){
     this.todos = JSON.parse(newTodos)
-    console.log('new todo', newTodos)
   }
-  if (this.DoneTodos !== null){
-    this.completedTodos = JSON.parse(this.DoneTodos)
+  if (DoneTodos !== null){
+    this.completedTodos = JSON.parse(DoneTodos)
   }
   
 }
@@ -56,26 +53,30 @@ getAvailableTodos(){
     this.todos=this.todos.filter(item=>item.title!==todo.title)
     this.delete(todo)
     // localStorage.setItem('Todos',JSON.stringify(this.todos) )
-    let currentTodo=this.todos.filter(item=>item.title===todo.title)[0];
+    // let currentTodo=this.todos.filter(item=>item.title===todo.title)[0];
     this.completedTodos.push(todo)
     todo.status=true;
-    this.completeChecked=true
     localStorage.setItem('Complete',JSON.stringify(this.completedTodos) )
     let index=this.todos.indexOf(todo);
-    console.log('completed ',  this.completedTodos)
-    console.log('todo ',  this.todos)
+    // console.log('completed ',  this.completedTodos)
+    // console.log('todo ',  this.todos)
   }
 
   delete(todo:Todo){
     if (todo.status==false) {
       this.todos=this.todos.filter(item=>item.title!==todo.title)
        localStorage.setItem('Todos',JSON.stringify(this.todos) )
-       console.log('delete from todo')
+      
     }
     if(todo.status==true){ 
     this.completedTodos=this.completedTodos.filter(item=>item.title!==todo.title)
        localStorage.setItem('Complete',JSON.stringify(this.completedTodos) )
        console.log('delet from completed')
+       if (this.completedTodos.length==0) {
+        
+        
+       }
     }
+    
   }
 }
