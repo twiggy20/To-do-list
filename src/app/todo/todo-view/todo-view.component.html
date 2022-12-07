@@ -10,11 +10,13 @@
                         </thead>
                         <tbody class="text-center animated fadeIn" >
                             <tr *ngFor="let todo of completed">
+                                <!-- <div class="pointer" (click)="onClick(todo.title)"> -->
                                 <td >{{todo.title }} {{todo.dateCreated |date}}</td>
                                 <td> {{ todo.dueDate |date }} </td>
                                 <td>{{ todo.body || 'no body' }}</td>
                                  <button class="mybutton"><i class="fa fa-trash text-danger " (click)="delete(todo)"></i></button>
-                            </tr>
+                                <!-- </div> -->
+                                </tr>
                         </tbody>              
                      
                 </table>

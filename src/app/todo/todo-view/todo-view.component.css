@@ -1,0 +1,14 @@
+.pointer{
+    cursor: pointer;
+  }
+  .head{
+    white-space: nowrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .myList{
+    background-color: rgba(220, 235, 241, 0.774);
+  }
+   .mybutton{
+    border: none;
+  }

@@ -12,8 +12,11 @@ export class SearchPipe implements PipeTransform {
        return todos;
        
     }
+      // return todos.filter(todo=>
+      // todo.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()));
+
       return todos.filter(todo=>
-      todo.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()));
+        todo.title.toLowerCase().indexOf(filterText.toLowerCase())!==-1);
         
     }
   

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="col-md-6 text-center my-3">
+        <div class="card">
+            <div class="card-body my-3">
+                <form #form="ngForm"  (ngSubmit)="add(todo)">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" [(ngModel)]="todo.title" name="title"  required  #title="ngModel">
+                        <div class="alert alert-danger" *ngIf="title.touched && !title.valid">Title field is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Due date</label>
+                        <input type="text" bsDatepicker [bsConfig]="datePickerConfig" ngModel [(ngModel)]="todo.dueDate"name="dueDate" #dueDate="ngModel" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" [(ngModel)]="todo.body" cols="40" rows="10" #body="ngModel" class="form-control" name="body"></textarea>
+                    </div>
+                    <button id="button" type="submit" class="btn btn-primary btn-block text-center my-2"> Add item</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+

@@ -10,14 +10,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoComponent } from './todo/todo.component';
 import { SearchPipe } from './search.pipe';
 import { TodoViewComponent } from './todo/todo-view/todo-view.component';
-
+import { TodoDetailsComponent } from './todo/todo-details/todo-details.component';
+import { TodoService } from './todo/todo.service';
+import { CreateTodoComponent } from './todo/create-todo/create-todo.component';
 @NgModule({
   declarations: [
     AppComponent,
     GetStartedComponent,
     TodoComponent,
     SearchPipe,
-    TodoViewComponent
+    TodoViewComponent,
+    TodoDetailsComponent,
+    CreateTodoComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { TodoViewComponent } from './todo/todo-view/todo-view.component';
     BsDatepickerModule.forRoot(),
     
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

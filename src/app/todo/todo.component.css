@@ -1,44 +1,70 @@
 #button{
-    width: 100px;
-    margin-left: 100px;
-    margin-top: 15px;;
+  width: 100px;
+  margin-left: 100px;
+  margin-top: 15px;;
 }
 .mybutton{
-    color: white;
+  color: white;
 }
+.mybutton{
+  border: none;
+  cursor: pointer;
+}
+.add{
+  color: black;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.head{
+  white-space: nowrap;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.create{
+  color: white;
+  background-color: blueviolet;
+}
+.intro, td{
+ 
+ color:rgb(91, 93, 201);
+}
+.myList{
+  background-color: rgba(220, 235, 241, 0.774);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+}
+
+
 form.myform input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-  }
-  
-  form.myform button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background:#778185;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
-  }
-  
-  form.myform button:hover {
-    background: #555c5f;
-  }
-  
-  form.myform::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  .mybutton{
-    border: none;
-  }
-  .head{
-    white-space: nowrap;
-  }
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.myform button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.myform button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.form-control{
+  border-radius: 0% ;
+}
